@@ -1,1 +1,1 @@
-web: gunicorn the-we-forum.wsgi
+web: gunicorn theweforum.wsgi
