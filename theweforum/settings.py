@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'theweforum.urls'
+ROOT_URLCONF = 'the-we-forum.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'theweforum.wsgi.application'
+WSGI_APPLICATION = 'the-we-forum.wsgi.application'
 
 
 # Database
