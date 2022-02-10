@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import User
+from django.contrib.auth.Model import User
 
 
 
@@ -11,4 +11,14 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
-    likes = models.ManyToManyField(User, related_name='forum_likes')
+    category = models.ForeignKey(Category, related_name='post_category')
+    likes = models.ManyToManyField(User, related_name='post_likes')
+
+
+class Comments(models.Model):
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_comments')
+    body = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
+    updated_date = models.DateField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='comment_likes')
