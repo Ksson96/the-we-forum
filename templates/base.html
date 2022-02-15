@@ -1,42 +1,68 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/style.css">
-<title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Title</title>
 </head>
+
 <body>
     <header>
         <div class="container-fluid">
-        <nav class="row navbar navbar-expand-lg navbar-light">
-        <ul class="col-md-6 nav">
-            <a href="" class="navbar-brand">
-                <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/50827917_1395512337293797_456388872754954240_n.png?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ZYKGmKO02gcAX9t4KKk&_nc_ht=scontent-arn2-1.xx&oh=00_AT-dGa692kTJHD2cmOMD8P1xaC5bUFdnHxFvPrClFfueEA&oe=622FDFF8" width="60" height="60" alt="logo-placeholder">
-            </a>
-        <li class="nav-item align-middle">
-        <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        </ul>
-        </nav>
-    </div>
+            <nav class="row navbar navbar-expand-lg navbar-light">
+                <ul class="col-md-6 nav d-flex align-items-center">
+                    <a href="" class="navbar-brand">
+                        <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/50827917_1395512337293797_456388872754954240_n.png?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ZYKGmKO02gcAX9t4KKk&_nc_ht=scontent-arn2-1.xx&oh=00_AT-dGa692kTJHD2cmOMD8P1xaC5bUFdnHxFvPrClFfueEA&oe=622FDFF8"
+                            width="70" height="70" alt="logo-placeholder">
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                    </li>
 
-   
+                    {% if request.user.is_authenticated %}
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="{% url 'account_signup' %}">Sign up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
 </body>
+
 </html>
