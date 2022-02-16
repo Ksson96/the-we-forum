@@ -1,12 +1,19 @@
+"""Imports"""
 from django.shortcuts import render
+from .forms import PostForm
 
-# Create your views here.
 
 def home_screen(request):
-    print(request)
-    return render(request, "index.html", {})
+    """Home Screen View"""
+    print(request.headers)
+    return render(request, 'index.html', {})
 
 
 def create_post(request):
-    print(request)
-    return render(request, "create_post.html", {})
+    """Create Post View"""
+    form = PostForm()
+    if request.method == 'POST':
+        print('Printing post:', request.POST)
+
+    context = {'form':form}
+    return render(request, 'create_post.html', context)

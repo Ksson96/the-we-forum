@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_screen, name="home"),
     path('accounts/', include('allauth.urls')),
-    path('create/', views.create_post, name="create_post") 
+    path('create_post', views.create_post, name="create_post"),
 ]
