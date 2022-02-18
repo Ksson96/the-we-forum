@@ -8,7 +8,10 @@ from django.contrib.auth.models import User
 def home_screen(request):
     """Home Screen View"""
     print(request.headers)
-    return render(request, 'index.html', {})
+    posts = Post.objects.all()
+    
+    context = {'posts' : posts}
+    return render(request, 'index.html', context)
 
 
 def create_post(request):

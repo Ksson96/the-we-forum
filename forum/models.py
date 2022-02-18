@@ -17,7 +17,7 @@ class Post(models.Model):
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
 #    category = models.ForeignKey(Category, default='No Category', on_delete=models.SET_DEFAULT, related_name='post_category')
-    likes = models.ManyToManyField(User, related_name='post_likes')
+    likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
 
     def __str__(self):
         return str(self.title)

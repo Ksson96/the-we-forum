@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row">
-        <div class="col-8 offset-2 post-list"></div>
+        <div class="col-8 offset-2 post-list">
+            {% for post in posts %}
+            <h2>{{ post.likes }}</h2>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
