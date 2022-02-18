@@ -22,6 +22,9 @@ class Post(models.Model):
     def __str__(self):
         return str(self.title)
 
+    def likes_amount(self):
+        return self.likes.count()
+
 
 class Comments(models.Model):
     """Comments model."""
