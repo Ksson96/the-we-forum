@@ -19,6 +19,9 @@ class Post(models.Model):
 #    category = models.ForeignKey(Category, default='No Category', on_delete=models.SET_DEFAULT, related_name='post_category')
     likes = models.ManyToManyField(User, related_name='post_likes')
 
+    def __str__(self):
+        return str(self.title)
+
 
 class Comments(models.Model):
     """Comments model."""
@@ -28,5 +31,7 @@ class Comments(models.Model):
     updated_date = models.DateField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='comment_likes')
 
+    def __str__(self):
+        return f"Comment by {self.author}: {self.body}"
 
 

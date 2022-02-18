@@ -20,6 +20,7 @@ def create_post(request):
             obj = form.save(commit=False)
             obj.author = request.user
             obj.save()
+            print('Printing date:', obj.created_date, obj.content)
         else:
             print("ERROR : Form is invalid")
             print(form.errors)
