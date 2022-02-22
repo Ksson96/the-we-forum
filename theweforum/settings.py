@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['the-we-forum.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-ksson96-theweforum-4pu9zto10lo.ws-eu32.gitpod.io', 'https://the-we-forum.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-ksson96-theweforum-4pu9zto10lo.ws-eu33.gitpod.io', 'https://the-we-forum.herokuapp.com']
 
 
 # Application definition

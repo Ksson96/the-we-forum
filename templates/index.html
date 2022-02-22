@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
 {% for post in posts %}
-<div class="container-md border">
-    <div class="row">
-        <div class="col-4">
-            <span>Posted by {{ post.author }} on {{ post.created_date }}</span>-
-            <p>{{ post.content }}</p>
-        </div>
+<div class="single-post container-md-fluid px-4 mt-4">
+<div class="row">
+    <div class="col-10">
+        <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
     </div>
+    <div class="col-2"><i class="fa-regular fa-heart float-end"></i></div>
+</div>
+{% if post.title %}
+<div class="row">
+    <div class="col fs-4 fw-bold">{{ post.title }}</div>
+</div>
+{% endif %}
+<div class="row">
+    <p class="col">{{ post.content }}</p>
+</div>
+<div class="row"><a class="col-2 btn btn-outline-secondary btn-sm mx-4 mb-2" href="">Comment</a></div>
 </div>
 {% endfor %}
 
