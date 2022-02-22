@@ -48,6 +48,12 @@ a, a:visited {
 #post-info {
     font-size: 12px;
     font-style: italic;
-    
 }
 
+#post-content {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+}
