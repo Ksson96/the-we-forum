@@ -9,7 +9,7 @@
         <div class="col-10">
             <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
         </div>
-        <div class="col-2"><span class="fa-regular fa-heart float-end"></span></div>
+        <div class="col-2"><i class="fa-light fa-heart"></i></div>
     </div>
     {% if post.title %}
     <div class="row">
@@ -19,7 +19,11 @@
     <div class="row">
         <p class="col" id="post-content" >{{ post.content }}</p>
     </div>
-    <div class="row"><a class="col-2 btn btn-outline-secondary btn-sm mx-4 mb-2" href="">Comment</a></div>
+    <div class="row">
+        <div class="col-4">
+            <a class="btn btn-outline-secondary btn-sm mb-2" href="">Comment</a>
+        </div>
+    </div>
 </div>
 {% endfor %}
 
