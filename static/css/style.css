@@ -43,6 +43,7 @@ a, a:visited {
 .single-post {
     background-color: #fff;
     border: #000 solid 1px;
+    border-radius: 5px;
 }
 
 #post-info {

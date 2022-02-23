@@ -14,9 +14,10 @@ def home_screen(request):
     return render(request, 'index.html', context)
 
 
-def post_details(request):
-    """Post Details View"""
-    post = post.objec
+def edit_post(request, post_id):
+    """Edit Post View"""
+    return render(request, 'edit_post.html')
+
 
 
 def create_post(request):
