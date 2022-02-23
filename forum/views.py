@@ -14,6 +14,11 @@ def home_screen(request):
     return render(request, 'index.html', context)
 
 
+def post_details(request):
+    """Post Details View"""
+    post = post.objec
+
+
 def create_post(request):
     """Create Post View"""
     form = PostForm(request.POST)
