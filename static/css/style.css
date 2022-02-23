@@ -62,3 +62,7 @@ a, a:visited {
 .errorlist {
     display:none;
 }
+
+.form-control:hover {
+    border: 1px solid black;
+}

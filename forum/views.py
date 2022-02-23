@@ -1,5 +1,5 @@
 """Imports"""
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm
 from .models import Post
 from django.contrib.auth.models import User
@@ -16,14 +16,28 @@ def home_screen(request):
 
 def edit_post(request, post_id):
     """Edit Post View"""
-    return render(request, 'edit_post.html')
+    post = get_object_or_404(Post, post_id=post_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.author = request.user
+            obj.save()
+        else:
+            print("ERROR : Form is invalid")
+            print(form.errors)
 
+    form = PostForm(instance=post)
+    context = {
+        'form':form
+    }
+    return render(request, 'edit_post.html', context)
 
 
 def create_post(request):
     """Create Post View"""
-    form = PostForm(request.POST)
     if request.method == 'POST':
+        form = PostForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.author = request.user
