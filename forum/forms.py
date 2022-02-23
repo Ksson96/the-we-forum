@@ -9,6 +9,11 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'content')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control'})
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': ''
+                }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'optional'})
         }
