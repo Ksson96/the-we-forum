@@ -23,6 +23,7 @@ def edit_post(request, post_id):
             obj = form.save(commit=False)
             obj.author = request.user
             obj.save()
+            return redirect('home')
         else:
             print("ERROR : Form is invalid")
             print(form.errors)
@@ -42,6 +43,7 @@ def create_post(request):
             obj = form.save(commit=False)
             obj.author = request.user
             obj.save()
+            return redirect('home')
         else:
             print("ERROR : Form is invalid")
             print(form.errors)
