@@ -9,8 +9,8 @@ def home_screen(request):
     """Home Screen View"""
     print(request.headers)
     posts = Post.objects.all()
-    
-    context = {'posts' : posts}
+    print(User)
+    context = {'posts':posts}
     return render(request, 'index.html', context)
 
 
@@ -18,12 +18,10 @@ def create_post(request):
     """Create Post View"""
     form = PostForm(request.POST)
     if request.method == 'POST':
-        print('Printing post:', request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.author = request.user
             obj.save()
-            print('Printing date:', obj.created_date, obj.content)
         else:
             print("ERROR : Form is invalid")
             print(form.errors)
