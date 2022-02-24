@@ -5,18 +5,29 @@
 }
 
 body {
-    background-color: #D3D3D3;
+    
+    background-color: #000;
 }
 
 header {
-    background-color: #FFF;
-    border-bottom: solid 1px black;
+    background-color: #363940;
+    border-bottom: 1px solid #FFCF74;
+    
 }
 
 
 
 li {
     font-size: 1.5rem;
+    color: #FFCF74;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link {
+    color: #fff;
 }
 
 a:hover {
@@ -41,8 +52,8 @@ a, a:visited {
 }
 
 .single-post {
-    background-color: #fff;
-    border: #000 solid 1px;
+    background-color: #363940;
+    border: 2px double #FFCF74;
     border-radius: 5px;
 }
 
@@ -66,3 +77,17 @@ a, a:visited {
 .form-control:hover {
     border: 1px solid black;
 }
+
+p {
+    color: #fff;
+}
+
+span {
+    color: #FFCF74;
+    
+}
+
+h4 {
+    color: white;
+}
+

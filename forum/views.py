@@ -37,8 +37,8 @@ def edit_post(request, post_id):
 
 def create_post(request):
     """Create Post View"""
+    form = PostForm(request.POST)
     if request.method == 'POST':
-        form = PostForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.author = request.user
