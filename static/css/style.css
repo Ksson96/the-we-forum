@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: #363940;
+    background-color: #292b2c;
     border-bottom: 1px solid #FFCF74;
     
 }
@@ -52,9 +52,14 @@ a, a:visited {
 }
 
 .single-post {
-    background-color: #363940;
-    border: 2px double #FFCF74;
-    border-radius: 5px;
+    background-color: #292b2c;
+    border: 2px solid #FFCF74;
+    border-radius: 2px;
+}
+
+.single-post:hover {
+    
+    background-color: #3e4041;
 }
 
 #post-info {
@@ -78,7 +83,7 @@ a, a:visited {
     border: 1px solid black;
 }
 
-p {
+h4, p {
     color: #fff;
 }
 
@@ -87,7 +92,14 @@ span {
     
 }
 
-h4 {
-    color: white;
+.post-button {
+    background-color:#363940;
+    color:#fff;
+    border: #FFCF74 solid 2px;
+}
+
+.post-button:hover {
+    color: #000;
+    background-color:#FFCF74;
 }
 
