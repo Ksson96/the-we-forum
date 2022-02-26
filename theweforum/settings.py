@@ -122,6 +122,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_FORMS = {
+    'login': 'allauth.account.forms.LoginForm',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

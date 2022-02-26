@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from forum import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_screen, name="home"),
     path('accounts/', include('allauth.urls')),
     path('create_post', views.create_post, name="create_post"),
     path('edit_post/<post_id>', views.edit_post, name="edit_post"),
+   
 ]

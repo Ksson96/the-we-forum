@@ -50,3 +50,5 @@ def create_post(request):
 
     context = {'form':form}
     return render(request, 'create_post.html', context)
+
+
