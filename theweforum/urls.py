@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('create_post', views.create_post, name="create_post"),
     path('edit_post/<post_id>', views.edit_post, name="edit_post"),
+    path('post/<int:post_id>', views.post, name="post"),
    
 ]

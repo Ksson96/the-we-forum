@@ -14,6 +14,15 @@ def home_screen(request):
     return render(request, 'index.html', context)
 
 
+def post(request, post_id):
+    """Single Post View"""
+    post = get_object_or_404(Post, post_id=post_id)
+    context = {
+        'post':post
+    }
+    return render(request, 'post.html', context)
+
+
 def edit_post(request, post_id):
     """Edit Post View"""
     post = get_object_or_404(Post, post_id=post_id)
