@@ -4,8 +4,9 @@
 
 
 {% for post in posts %}
-<a href="post/{{ post.post_id }}">
-<div class="single-post container-md px-4 mt-4">
+
+<div class="post container-md px-4 mt-4">
+    <a class="post-link" href="post/{{ post.post_id }}">
     <div class="row">
         <div class="col-10">
             {% if post.author == request.user %}
@@ -16,30 +17,26 @@
         </div>
         <div class="col-2"><i class="fa-light fa-heart"></i></div>
     </div>
-    {% if post.title %}
     <div class="row mb-4">
         <div class="col"><h4 class="fs-4 fw-bold">{{ post.title }}</h4></div>
     </div>
-    {% endif %}
     <div class="row mb-4">
         <p class="col" id="post-content" >{{ post.content }}</p>
     </div>
+</a>
     <div class="row mb-2">
         <div class="col-1">
-            <a href="/{ post.post_id }">
                 <button class="btn-sm fs-6 post-button">Comment</button>
-            </a>
         </div>
         {% if post.author == request.user %}
         <div class="col-1">
-            <a href="/edit_post/{{ post.post_id }}">
-                <button class="btn-sm fs-6 post-button">Edit</button>
-            </a>
+                <button href="/edit_post/{{ post.post_id }}" class="btn-sm fs-6 post-button">Edit</button>
         </div>
         {% endif %}
+    
     </div>
 </div>
-</a>
+
 {% endfor %}
 
 

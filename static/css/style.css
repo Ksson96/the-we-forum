@@ -15,6 +15,13 @@ header {
     
 }
 
+h4, p {
+    color: #fff;
+}
+
+span {
+    color: #FFCF74;
+}
 
 
 li {
@@ -32,7 +39,6 @@ li {
 
 a:hover {
     font-weight: 600;
-    
 }
 
 a:active {
@@ -51,13 +57,13 @@ a, a:visited {
     margin: 0 auto;
 }
 
-.single-post {
+.post {
     background-color: #292b2c;
     border: 2px solid #FFCF74;
     border-radius: 2px;
 }
 
-.single-post:hover {
+.post:hover {
     
     background-color: #3e4041;
 }
@@ -75,21 +81,20 @@ a, a:visited {
    -webkit-box-orient: vertical;
 }
 
+.post-link:hover {
+    font-weight: initial;
+}
+
+.post-link {
+    
+}
+
 .errorlist {
     display:none;
 }
 
 .form-control:hover {
     border: 1px solid black;
-}
-
-h4, p {
-    color: #fff;
-}
-
-span {
-    color: #FFCF74;
-    
 }
 
 .post-button {
@@ -103,3 +108,19 @@ span {
     background-color:#FFCF74;
 }
 
+
+/* Single Post View */
+
+.single-post {
+    border-bottom: none;
+}
+
+#border {
+    border-bottom: 2px solid #FFCF74;
+    width: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 25%;
+    
+
+}
