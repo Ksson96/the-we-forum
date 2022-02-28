@@ -28,7 +28,8 @@ class Post(models.Model):
 
 class Comments(models.Model):
     """Comments model."""
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_comments')
+    post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE, related_name='post_comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comments')
     body = models.TextField()
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
