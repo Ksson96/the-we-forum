@@ -1,6 +1,6 @@
 from django import forms
 from allauth.account.forms import LoginForm
-from .models import Post
+from .models import Post, Comments
 
 
 
@@ -20,19 +20,11 @@ class PostForm(forms.ModelForm):
         }
 
 
-# class CustomLoginForm(LoginForm):
-#     def __init__(self, *args, **kwargs):
-#         super(CustomLoginForm(), self).__init__(*args, **kwargs)
-#         self.fields['login'].widget = forms.TextInput(attrs={'type': 'email', 'class': 'yourclass'})
-#         self.fields['password'].widget = forms.PasswordInput(attrs={'class': 'yourclass'})
-#         return
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ('body',)
 
-
-
-
-# class CustomLoginForm(LoginForm):
-#     fields = ('username', 'password')
-#     widgets = {
-#         'username': forms.TextInput(attrs={'class': 'form-control'}),
-#         'password': forms.PasswordInput(attrs={'class': 'form-control'})
-#         }
+        widgets = {
+            'body': forms.Textarea(attrs={'class': 'form-control'})
+        }
