@@ -28,14 +28,14 @@ class Post(models.Model):
 
 class Comments(models.Model):
     """Comments model."""
-    post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE, related_name='post_comments')
+    post_id = models.ForeignKey(Post, null=True, on_delete=models.CASCADE, related_name='post_comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comments')
     body = models.TextField()
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='comment_likes')
 
-    def __str__(self):
-        return f"Comment by {self.author}: {self.body}"
+    # def __str__(self):
+    #     return f"Comment by {self.author}: {self.body}"
 
 
