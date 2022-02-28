@@ -17,12 +17,14 @@ def home_screen(request):
 def post(request, post_id):
     """Single Post View"""
     post = get_object_or_404(Post, post_id=post_id)
-    comments = Comments.objects.all().filter(post_id=post_id)
+    comments = Comments.objects.filter(post=post)
+    print(comments)
     comment_form = CommentForm(request.POST)
     if request.method == 'POST':
         if comment_form.is_valid():
             obj = comment_form.save(commit=False)
             obj.author = request.user
+            obj.post = post
             obj.save()
         else:
             print("ERROR : Form is invalid")
@@ -34,23 +36,6 @@ def post(request, post_id):
         'comment_form':comment_form
     }
     return render(request, 'post.html', context)
-
-
-
-# def post_comment(request, post_id):
-#     comment_form = CommentForm(request.POST)
-#     comments = Comments.objects.all().filter(post_id=post_id)
-    
-
-#     context = {'comment_form':comment_form}
-
-#     else:
-#         context = {'comments':comments}
-#     return render(request, '')
-
-
-
-
 
 
 def edit_post(request, post_id):

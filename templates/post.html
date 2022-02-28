@@ -39,11 +39,22 @@
 
 <div class="container-md px-4 post-comments">
     <div class="row">
-        <div class="col col-md-10"><p>Massa text som vi testar</p></div>
+        <div class="col col-md-10 offset-1">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ comment_form }}  
+        </div>
+        <div class="col-1 align-self-end">
+            <input type="submit" name="Submit" value="Comment" class="btn-sm fs-6 post-button">
+        </div>
     </div>
+    {% for comment in comments %}
     <div class="row">
-        <div class="col"><button class="btn-sm fs-6 post-button">Comment</button></div>
+        <div class="col">
+            <p>{{ comment.body }}</p>
+        </div>
     </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
