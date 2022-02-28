@@ -2,7 +2,7 @@
 {% block content %}
 
 <!--Post Section-->
-<div class="post single-post container-md px-4 mt-4">
+<div class="container-md px-4 mt-4 single-post">
     <div class="row">
         <div class="col-10">
             {% if post.author == request.user %}
@@ -32,20 +32,22 @@
         </div>
         
     </div>
-    <div id="border"></div>
+    <!-- <div id="border"></div> -->
 </div>
 
 <!--Comment Section-->
 
-<div class="container-md px-4 post-comments">
+<div class="container-md comment-container">
     <div class="row">
-        <div class="col col-md-10 offset-1">
+        <div class="col col-md-10 offset-1 mt-2">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ comment_form }}  
         </div>
-        <div class="col-1 align-self-end">
-            <input type="submit" name="Submit" value="Comment" class="btn-sm fs-6 post-button">
+    </div>
+    <div class="row mt-2">
+        <div class="col-1 offset-10 ps-1">
+            <input type="submit" name="Submit" value="Comment" class="btn fs-6 post-button">
         </div>
     </div>
     {% for comment in comments %}

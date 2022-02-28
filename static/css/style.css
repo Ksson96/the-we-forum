@@ -112,7 +112,10 @@ a, a:visited {
 /* Single Post View */
 
 .single-post {
-    border-bottom: none;
+    background-color: #3e4041;
+    border: 2px solid #FFCF74;
+    border-radius: 2px;
+    border-bottom:none;
 }
 
 #border {
@@ -121,6 +124,18 @@ a, a:visited {
     display: inline-block;
     position: absolute;
     left: 25%;
-    
+}
 
+.comment-container {
+    background-color: #292b2c;
+    border-left: #FFCF74 solid 2px;
+    border-right: #FFCF74 solid 2px;
+}
+
+form > label {
+    color: #FFCF74;
+}
+
+.form-control {
+    background-color: #3e4041;
 }

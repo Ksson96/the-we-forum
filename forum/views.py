@@ -18,7 +18,6 @@ def post(request, post_id):
     """Single Post View"""
     post = get_object_or_404(Post, post_id=post_id)
     comments = Comments.objects.filter(post=post)
-    print(comments)
     comment_form = CommentForm(request.POST)
     if request.method == 'POST':
         if comment_form.is_valid():
