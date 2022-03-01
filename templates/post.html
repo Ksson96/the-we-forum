@@ -39,7 +39,7 @@
 <!--Comment Section-->
 
 <div class="container-md comment-container">
-    <div class="row pt-3 ps-2 mb-1">
+    <div class="row pt-2 ps-2 mb-1">
         <h4 class="col-4 comment-heading">Comments:</h4>
         
     </div>
@@ -54,9 +54,7 @@
         </div>
     </div>
     {% for comment in comments %}
-    <div class=
-    "row{% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %}
-    {%  %}">
+    <div class="row {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
         <div class="col">
             <span>{{ comment.author }} - {{ comment.created_date }}</span>
             <p class="mt-2">{{ comment.body }}</p>

@@ -133,7 +133,7 @@ form > label {
 }
 
 .post-options {
-    border-top: 1px dotted #FFCF74;
+    
     background-color: #292b2c;
 }
 
@@ -153,4 +153,8 @@ form > label {
 
 .comment-heading {
     text-decoration: underline;
+}
+
+.last-comment {
+    border-bottom: #FFCF74 solid 2px;
 }
