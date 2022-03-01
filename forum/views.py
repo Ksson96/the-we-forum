@@ -25,6 +25,7 @@ def post(request, post_id):
             obj.author = request.user
             obj.post = post
             obj.save()
+            return redirect(request.path_info)
         else:
             print("ERROR : Form is invalid")
             print(comment_form.errors)

@@ -110,6 +110,13 @@ form > label {
     border: #FFCF74 solid 2px;
 }
 
+.comment-like-btn {
+    background-color:#292b2c;
+    color:#FFCF74;
+    border:none;
+  
+}
+
 .post-button:hover {
     color: #000;
     background-color:#FFCF74;
@@ -122,10 +129,13 @@ form > label {
     background-color: #3e4041;
     border: 2px solid #FFCF74;
     border-radius: 2px;
-    border-bottom:1px solid #FFCF74;
+    border-bottom:1px dotted #FFCF74;
 }
 
-
+.post-options {
+    border-top: 1px dotted #FFCF74;
+    background-color: #292b2c;
+}
 
 .comment-container {
     background-color: #292b2c;
@@ -139,4 +149,8 @@ form > label {
 
 .comment-color {
     background-color: #3e4041;
+}
+
+.comment-heading {
+    text-decoration: underline;
 }
