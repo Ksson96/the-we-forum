@@ -15,6 +15,7 @@
 ### Comments Table
 | Database Key 	| Type       	| Relationship 	|                   	|
 |--------------	|------------	|--------------	|-------------------	|
+| post       	  | Post model 	| ForeignKey   	| Cascade on delete 	|
 | author       	| User model 	| ForeignKey   	| Cascade on delete 	|
 | body         	| TextField  	|              	|                   	|
 | created_date 	| DateTime   	|              	| auto_now_add True 	|
