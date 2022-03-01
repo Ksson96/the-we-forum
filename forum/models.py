@@ -24,6 +24,10 @@ class Post(models.Model):
 
     def likes_amount(self):
         return self.likes.count()
+    
+    class Meta:
+        """Post Ordering"""
+        ordering = ['-created_date', 'updated_date']
 
 
 class Comments(models.Model):
@@ -38,7 +42,8 @@ class Comments(models.Model):
     def __str__(self):
         return f"Comment by {self.author}: {self.body}"
 
-
-     
+    class Meta:
+        """Comment Ordering"""
+        ordering = ['-created_date', 'updated_date']
 
 

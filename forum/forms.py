@@ -1,11 +1,11 @@
 from django import forms
-from allauth.account.forms import LoginForm
 from .models import Post, Comments
 
 
-
 class PostForm(forms.ModelForm):
+    """Create A Post"""
     class Meta:
+        """Meta Class"""
         model = Post
         fields = ('title', 'content')
 
@@ -21,12 +21,14 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    """Post A Comment"""
     class Meta:
+        """Meta Class"""
         model = Comments
         fields = ('body',)
         labels = {
             'body': ('Leave a comment:'),
         }
         widgets = {
-            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 1 })
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 1})
         }
