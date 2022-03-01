@@ -114,7 +114,10 @@ form > label {
     background-color:#292b2c;
     color:#FFCF74;
     border:none;
-  
+}
+
+.comment-like-btn:hover {
+    background-color:#3e4041;
 }
 
 .post-button:hover {
@@ -126,7 +129,7 @@ form > label {
 /* Single Post View */
 
 .single-post {
-    background-color: #3e4041;
+    background-color: #292b2c;
     border: 2px solid #FFCF74;
     border-radius: 2px;
     border-bottom:1px dotted #FFCF74;
@@ -153,6 +156,8 @@ form > label {
 
 .comment-heading {
     text-decoration: underline;
+    color:#FFCF74;
+    
 }
 
 .last-comment {

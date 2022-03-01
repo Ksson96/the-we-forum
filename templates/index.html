@@ -7,33 +7,35 @@
 
 <div class="post container-md px-4 mt-4">
     <a class="post-link" href="post/{{ post.post_id }}">
-    <div class="row">
-        <div class="col-10">
-            {% if post.author == request.user %}
-            <span id="post-info">Posted by <strong>YOU</strong> on {{ post.created_date }}</span>
-            {% else %}
-            <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
-            {% endif %}
+        <div class="row">
+            <div class="col-10">
+                {% if post.author == request.user %}
+                <span id="post-info">Posted by <strong>YOU</strong> on {{ post.created_date }}</span>
+                {% else %}
+                <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
+                {% endif %}
+            </div>
+            <div class="col-2"><i class="fa-light fa-heart"></i></div>
         </div>
-        <div class="col-2"><i class="fa-light fa-heart"></i></div>
-    </div>
-    <div class="row mb-4">
-        <div class="col"><h4 class="fs-4 fw-bold">{{ post.title }}</h4></div>
-    </div>
-    <div class="row mb-4">
-        <p class="col" id="post-content" >{{ post.content }}</p>
-    </div>
-</a>
+        <div class="row mb-4">
+            <div class="col">
+                <h4 class="fs-4 fw-bold">{{ post.title }}</h4>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <p class="col" id="post-content">{{ post.content }}</p>
+        </div>
+    </a>
     <div class="row mb-2">
         <div class="col-1">
-                <button class="btn-sm fs-6 post-button">Comment</button>
+            <button class="btn-sm fs-6 post-button">Comment</button>
         </div>
         {% if post.author == request.user %}
         <div class="col-1">
-                <button href="/edit_post/{{ post.post_id }}" class="btn-sm fs-6 post-button">Edit</button>
+            <button href="/edit_post/{{ post.post_id }}" class="btn-sm fs-6 post-button">Edit</button>
         </div>
         {% endif %}
-    
+
     </div>
 </div>
 

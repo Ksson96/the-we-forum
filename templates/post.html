@@ -15,25 +15,21 @@
     </div>
     {% if post.title %}
     <div class="row mb-4">
-        <div class="col"><h4 class="fs-4 fw-bold">{{ post.title }}</h4></div>
+        <div class="col">
+            <h4 class="fs-4 fw-bold">{{ post.title }}</h4>
+        </div>
     </div>
     {% endif %}
     <div class="row mb-4">
-        <p class="col" >{{ post.content }}</p>
+        <p class="col">{{ post.content }}</p>
     </div>
-    <div class="row post-options no-gutters">
-        <div class="col-2 col-md-1 mb-1 mt-1">
-            <button type="button" class="btn-sm fs-6 comment-like-btn">Like</button>
-        </div>
-       
-        <!-- {% if post.author == request.user %} -->
-        <!-- {% endif %} -->
-        <div class="col-2 col-md-1 mb-1 mt-1">
-            <button type="button" data-bs-toggle="collapse" data-bs-target=".collapse" class="btn-sm fs-6 comment-like-btn" aria-expanded="false" aria-controls="collapse">Comment</button>
-        </div>
-     
+    <div class="row post-options">
+        <button type="button" class="col-2 col-md-1 ms-2 mb-1 mt-1 btn-sm fs-6 comment-like-btn">Like</button>
+        <button type="button" data-bs-toggle="collapse" data-bs-target=".collapse"
+            class="col-2 col-md-1 mb-1 mt-1 btn-sm fs-6 comment-like-btn" aria-expanded="false"
+            aria-controls="collapse">Comment</button>
     </div>
-  
+
 </div>
 
 <!--Comment Section-->
@@ -43,28 +39,30 @@
         <div class="col-12 col-md-11 mb-2">
             <form method="POST" action="">
                 {% csrf_token %}
-                {{ comment_form }}  
+                {{ comment_form }}
         </div>
         <div class="col collapse align-self-center">
-            <input type="submit" name="Submit" value="Post" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button">
+            <input type="submit" name="Submit" value="Post" data-bs-toggle="collapse" data-bs-target=".collapse"
+                aria-controls="collapse" class="btn fs-6 post-button">
         </div>
     </div>
-        {% if comments %}
-        <div class="row pt-2 ps-2 mb-1">
+    {% if comments %}
+    <div class="row pt-2 ps-2 mb-1 comment-color">
         <h4 class="col-4 comment-heading">Comments:</h4>
         {% else %}
         <div class="row pt-2 ps-2 mb-2 last-comment">
-        <h6 class="col-6">Be the first one to comment on this post!</h6>
-        {% endif %} 
-    </div>
-    {% for comment in comments %}
-    <div class="row {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
-        <div class="col">
-            <span class="ps-2">{{ comment.author }} - {{ comment.created_date }}</span>
-            <p class="mt-2">{{ comment.body }}</p>
+            <h6 class="col-6">Be the first one to comment on this post!</h6>
+            {% endif %}
         </div>
+        {% for comment in comments %}
+        <div
+            class="row {% if forloop.counter|divisibleby:2 %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
+            <div class="col">
+                <span>{{ comment.author }} - {{ comment.created_date }}</span>
+                <p class="ps-2 mt-2">{{ comment.body }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
-{% endblock %}
+    {% endblock %}
