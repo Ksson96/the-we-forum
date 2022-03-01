@@ -50,6 +50,10 @@ a, a:visited {
     text-decoration: none;
    }
 
+form > label {
+    color: #FFCF74;
+}
+
 /* Post List View */
 
 .post-container {
@@ -115,16 +119,10 @@ a, a:visited {
     background-color: #3e4041;
     border: 2px solid #FFCF74;
     border-radius: 2px;
-    border-bottom:none;
+    border-bottom:1px solid #FFCF74;
 }
 
-#border {
-    border-bottom: 2px solid #FFCF74;
-    width: 50%;
-    display: inline-block;
-    position: absolute;
-    left: 25%;
-}
+
 
 .comment-container {
     background-color: #292b2c;
@@ -132,10 +130,10 @@ a, a:visited {
     border-right: #FFCF74 solid 2px;
 }
 
-form > label {
-    color: #FFCF74;
+.form-control {
+    background-color: #3e4041;
 }
 
-.form-control {
+.comment-color {
     background-color: #3e4041;
 }
