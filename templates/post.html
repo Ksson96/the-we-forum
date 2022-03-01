@@ -39,10 +39,6 @@
 <!--Comment Section-->
 
 <div class="container-md comment-container">
-    <div class="row pt-2 ps-2 mb-1">
-        <h4 class="col-4 comment-heading">Comments:</h4>
-        
-    </div>
     <div class="row collapse">
         <div class="col-12 col-md-11 mb-2">
             <form method="POST" action="">
@@ -53,10 +49,18 @@
             <input type="submit" name="Submit" value="Post" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button">
         </div>
     </div>
+        {% if comments %}
+        <div class="row pt-2 ps-2 mb-1">
+        <h4 class="col-4 comment-heading">Comments:</h4>
+        {% else %}
+        <div class="row pt-2 ps-2 mb-2 last-comment">
+        <h6 class="col-6">Be the first one to comment on this post!</h6>
+        {% endif %} 
+    </div>
     {% for comment in comments %}
     <div class="row {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
         <div class="col">
-            <span>{{ comment.author }} - {{ comment.created_date }}</span>
+            <span class="ps-2">{{ comment.author }} - {{ comment.created_date }}</span>
             <p class="mt-2">{{ comment.body }}</p>
         </div>
     </div>
