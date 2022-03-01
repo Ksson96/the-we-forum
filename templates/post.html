@@ -22,12 +22,13 @@
         <p class="col" >{{ post.content }}</p>
     </div>
     <div class="row">
-        <div class="col-4 col-md-3 offset-2">
-                <span>Comment Count</span>
+        <div class="col-4 col-md-3 mb-1">
+            <button type="button" data-bs-toggle="collapse" data-bs-target=".collapse" class="btn-sm fs-6 post-button" aria-expanded="false" aria-controls="collapse">Comment</button><span> Comment Count</span>
         </div>
+       
         <!-- {% if post.author == request.user %} -->
         <!-- {% endif %} -->
-        <div class="col-4 col-md-3 ">
+        <div class="col-3 col-md-2 ">
             <span>Like Count</span>
         </div>
      
@@ -38,16 +39,16 @@
 <!--Comment Section-->
 
 <div class="container-md comment-container">
-    <div class="row">
-        <div class="col col-md-10 offset-1 mt-4">
+    <div class="row collapse">
+        <div class="col col-md-10 offset-md-1 mt-4">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ comment_form }}  
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-1 offset-10 ps-1">
-            <input type="submit" name="Submit" value="Comment" class="btn fs-6 post-button">
+    <div class="row">
+        <div class="col-1 offset-10 mt-1 collapse">
+            <input type="submit" name="Submit" value="Post" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button">
         </div>
     </div>
     {% for comment in comments %}
