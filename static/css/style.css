@@ -40,7 +40,7 @@ li {
     font-size: 1.5rem;
 }
 
-.form-group > p > label, h4 {
+.form-group > p > label {
     color: #FFCF74;
 }
 
@@ -57,14 +57,10 @@ li {
     border-radius: 2px;
 }
 
-.post:hover {
-    
-    background-color: #3e4041;
-}
-
 #post-info {
     font-size: 12px;
     font-style: italic;
+    
 }
 
 #post-content {
@@ -77,10 +73,6 @@ li {
 
 .post-link:hover {
     font-weight: initial;
-}
-
-.post-link {
-    
 }
 
 .errorlist {
