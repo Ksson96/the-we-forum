@@ -28,7 +28,7 @@ a:hover {
     color: #fff;
 }
 
-h4, h6, p {
+span, h6, p {
     color: #fff;
 }
 
@@ -40,7 +40,7 @@ li {
     font-size: 1.5rem;
 }
 
-.form-group > p > label {
+.form-group > p > label, h4 {
     color: #FFCF74;
 }
 
