@@ -32,6 +32,10 @@ span, h6, p {
     color: #fff;
 }
 
+.important-text {
+    color:#FFCF74;
+}
+
 .nav-link:hover, .nav-link:focus, .nav-link:active {
     color: #fff;
 }
@@ -90,7 +94,7 @@ li {
 }
 
 .comment-like-btn {
-    background-color:#292b2c;
+    background-color:#1d1e1f;
     color:#FFCF74;
     border:none;
 }
@@ -111,7 +115,7 @@ li {
     background-color: #292b2c;
     border: 2px solid #FFCF74;
     border-radius: 2px;
-    border-bottom:1px dotted #FFCF74;
+    border-bottom: none;
 }
 
 .post-options {
@@ -125,6 +129,10 @@ li {
     border-right: #FFCF74 solid 2px;
 }
 
+.comment-like {
+    border-bottom: 1px dotted #FFCF74;
+}
+
 .form-control {
     background-color: #3e4041;
 }
@@ -133,10 +141,9 @@ li {
     background-color: #3e4041;
 }
 
-.comment-heading {
+.comment-container > h4 {
     text-decoration: underline;
-    color:#FFCF74;
-    
+    color: #fff;
 }
 
 .last-comment {
@@ -145,7 +152,11 @@ li {
 
  /* Forms */
 
- .form-container {
+.comment-form {
+    background-color:#1d1e1f;
+}
+
+.form-container {
     background-color: #292b2c;
     border: 2px solid #FFCF74;
     border-radius: 2px;

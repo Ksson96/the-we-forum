@@ -2,67 +2,54 @@
 {% block content %}
 
 <!--Post Section-->
-<div class="container-md  mt-4 single-post">
+<div class="container-md mt-4">
     <div class="row">
-        <div class="col-10">
+        <div class="col-md-10 offset-md-1 single-post">
             {% if post.author == request.user %}
             <span id="post-info">Posted by <strong>YOU</strong> on {{ post.created_date }}</span>
             {% else %}
             <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
             {% endif %}
-        </div>
-        <div class="col-2"><i class="fa-light fa-heart"></i></div>
-    </div>
     {% if post.title %}
-    <div class="row mb-4">
-        <div class="col">
             <h4 class="fs-4 fw-bold">{{ post.title }}</h4>
-        </div>
-    </div>
     {% endif %}
-    <div class="row mb-4">
-        <p class="col">{{ post.content }}</p>
+        <p>{{ post.content }}</p>
+    <div class="post-options">
+        
     </div>
-    <div class="row post-options">
-        <button type="button" class="col-2 col-md-1 ms-2 mb-1 mt-1 btn-sm fs-6 comment-like-btn">Like</button>
-        <button type="button" data-bs-toggle="collapse" data-bs-target=".collapse"
-            class="col-2 col-md-1 mb-1 mt-1 btn-sm fs-6 comment-like-btn" aria-expanded="false"
-            aria-controls="collapse">Comment</button>
-    </div>
-
 </div>
+</div>
+
+
 
 <!--Comment Section-->
 
-<div class="container-md comment-container">
-    <div class="row collapse">
-        <div class="col-12 col-md-11 mb-2">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 comment-container comment-like pb-1">
+            <button type="button" class="btn-sm fs-6 post-button">Like</button>
+            <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse"  aria-expanded="false" aria-controls="collapse">Comment</button>
+            </div>
+        <div class="col-md-10 offset-md-1 collapse py-2 comment-container comment-form">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ comment_form }}
+            <input type="submit" name="Submit" value="Submit" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button mt-2">
         </div>
-        <div class="col collapse align-self-center">
-            <input type="submit" name="Submit" value="Post" data-bs-toggle="collapse" data-bs-target=".collapse"
-                aria-controls="collapse" class="btn fs-6 post-button">
-        </div>
-    </div>
-    {% if comments %}
-    <div class="row pt-2 ps-2 mb-1 comment-color">
-        <h4 class="col-4 comment-heading">Comments:</h4>
-        {% else %}
-        <div class="row pt-2 ps-2 mb-2 last-comment">
-            <h6 class="col-6">Be the first one to comment on this post!</h6>
-            {% endif %}
-        </div>
+        {% if comments %}
         {% for comment in comments %}
-        <div
-            class="row {% if forloop.counter|divisibleby:2 %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
-            <div class="col">
-                <span>{{ comment.author }} - {{ comment.created_date }}</span>
-                <p class="ps-2 mt-2">{{ comment.body }}</p>
-            </div>
+        <div class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
+            <span class="important-text">{{ comment.author }} - {{ comment.created_date }}</span>
+            <p class="ps-2 mt-2">{{ comment.body }}</p>
         </div>
-        {% endfor %}
+        {% endfor %}  
+        {% else %}
+        <div class="col-md-10 offset-md-1 last-comment comment-container">
+            <h6 class="pt-2">Be the first one to comment on this post!</h6>
+        </div>
+        {% endif %}
+        
     </div>
+    </div>
+
 
     {% endblock %}
