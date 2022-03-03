@@ -12,16 +12,21 @@
             {% endif %}
                 {% if post.content %}
                 <a class="post-link" href="post/{{ post.post_id }}">             
-                <h4 class="fs-4">{{ post.title }}</h4></a>
-                    <p class="py-2 px-1" id="post-content">{{ post.content }}</p>
+                    <h4 class="fs-4">{{ post.title }}</h4></a>
+                <p class="py-2 px-1" id="post-content">{{ post.content }}</p>
                     {% else %}
-                    <a class="post-link" href="post/{{ post.post_id }}">             
-                        <h4 class="fs-4 mb-3 pt-2">{{ post.title }}</h4></a>
+                <a class="post-link" href="post/{{ post.post_id }}">             
+                    <h4 class="fs-4 mb-3 pt-2">{{ post.title }}</h4></a>
                     {% endif %}
-            <div class="py-3">
-                <a href="post/{{ post.post_id }}" class="btn-sm fs-6 post-button">Comment</a>
+            <div class="py-1 post-options">
+                <a href="post/{{ post.post_id }}" class="btn-sm fs-6 post-button d-inline-block">Comment</a>
+            
                 {% if post.author == request.user %}
-                <a href="/edit_post/{{ post.post_id }}" class="btn-sm fs-6 post-button">Edit</a>
+               
+                <a href="/edit_post/{{ post.post_id }}" class="btn-sm post-button mx-1 author-options">Delete</a>
+                <a href="/delete_post/{{ post.post_id }}" class="btn-sm post-button author-options">Edit</a>
+            
+        
                 {% endif %}
             </div>
         

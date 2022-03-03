@@ -108,6 +108,10 @@ li {
     background-color:#FFCF74;
 }
 
+.author-options {
+    float:right;
+}
+
 
 /* Single Post View */
 
@@ -120,7 +124,7 @@ li {
 
 .post-options {
     
-    background-color: #292b2c;
+    border-top: 1px dotted #FFCF74;
 }
 
 .comment-container {

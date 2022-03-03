@@ -30,9 +30,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'home' %}">Home</a>
                     </li>
-
                     {% if request.user.is_authenticated %}
-
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_post' %}">Create Post</a>
                     </li>
