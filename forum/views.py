@@ -43,22 +43,23 @@ def post(request, post_id):
 def edit_post(request, post_id):
     """Edit Post View"""
     post = get_object_or_404(Post, post_id=post_id)
-    if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.author = request.user
-            obj.save()
-            return redirect('home')
-        else:
-            print("ERROR : Form is invalid")
-            print(form.errors)
+    if request.user == post.author:
+        if request.method == 'POST':
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.author = request.user
+                obj.save()
+                return redirect('home')
+            else:
+                print("ERROR : Form is invalid")
+                print(form.errors)
 
-    form = PostForm(instance=post)
-    context = {
-        'form':form
-    }
-    return render(request, 'edit_post.html', context)
+        form = PostForm(instance=post)
+        context = {
+            'form':form
+        }
+        return render(request, 'edit_post.html', context)
 
 
 def create_post(request):
@@ -81,14 +82,25 @@ def create_post(request):
 def delete_post(request, post_id):
     """Delete Post"""
     post = get_object_or_404(Post, post_id=post_id)
-    post.delete()
+    if request.user == post.author:
+        post.delete()
+    
     return redirect('home')
 
 
 def delete_comment(request, comment_id):
     """Delete Comment"""
     comment = get_object_or_404(Comment, comment_id=comment_id)
-    comment.delete()
-
+    if request.user == comment.author:
+        comment.delete()
+    
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def like_post(request, post_id):
+    """Like Post View"""
+    post = get_object_or_404(Post, post_id=post_id)
+    post.likes.add(request.user)
+
+    return redirect('home')
 
