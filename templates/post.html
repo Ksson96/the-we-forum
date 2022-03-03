@@ -38,6 +38,8 @@
         <div class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
             <span class="important-text">{{ comment.author }} - {{ comment.created_date }}</span>
             <p class="ps-2 mt-2">{{ comment.body }}</p>
+            <a href="/delete_comment/{{ comment.comment_id }}" class="btn-sm post-button">Delete</a>
+            <a href=""></a>
         </div>
         {% endfor %}  
         {% else %}

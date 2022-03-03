@@ -30,8 +30,9 @@ class Post(models.Model):
         ordering = ['-created_date', 'updated_date']
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     """Comments model."""
+    comment_id = models.AutoField(primary_key=True)
     post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE, related_name='post_comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comments')
     body = models.TextField()
@@ -40,7 +41,7 @@ class Comments(models.Model):
     likes = models.ManyToManyField(User, related_name='comment_likes')
 
     def __str__(self):
-        return f"Comment by {self.author}: {self.body}"
+        return f"Comment by {self.author}: {self.body} id: {self.comment_id}"
 
     class Meta:
         """Comment Ordering"""

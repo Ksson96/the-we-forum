@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comments
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -24,7 +24,7 @@ class CommentForm(forms.ModelForm):
     """Post A Comment"""
     class Meta:
         """Meta Class"""
-        model = Comments
+        model = Comment
         fields = ('body',)
         labels = {
             'body': ('Leave a comment:'),

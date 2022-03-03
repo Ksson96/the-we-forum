@@ -1,7 +1,9 @@
 """Imports"""
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from .forms import PostForm, CommentForm
-from .models import Post, Comments
+from .models import Post, Comment
 from django.contrib.auth.models import User
 
 
@@ -17,7 +19,7 @@ def home_screen(request):
 def post(request, post_id):
     """Single Post View"""
     post = get_object_or_404(Post, post_id=post_id)
-    comments = Comments.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post)
     comment_form = CommentForm(request.POST)
     if request.method == 'POST':
         if comment_form.is_valid():
@@ -81,4 +83,12 @@ def delete_post(request, post_id):
     post = get_object_or_404(Post, post_id=post_id)
     post.delete()
     return redirect('home')
+
+
+def delete_comment(request, comment_id):
+    """Delete Comment"""
+    comment = get_object_or_404(Comment, comment_id=comment_id)
+    comment.delete()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
