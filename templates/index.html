@@ -23,8 +23,8 @@
             
                 {% if post.author == request.user %}
                
-                <a href="/edit_post/{{ post.post_id }}" class="btn-sm post-button mx-1 author-options">Delete</a>
-                <a href="/delete_post/{{ post.post_id }}" class="btn-sm post-button author-options">Edit</a>
+                <a href="/delete_post/{{ post.post_id }}" class="btn-sm post-button mx-1 author-options">Delete</a>
+                <a href="/edit_post/{{ post.post_id }}" class="btn-sm post-button author-options">Edit</a>
             
         
                 {% endif %}

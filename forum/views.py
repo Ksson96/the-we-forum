@@ -76,5 +76,9 @@ def create_post(request):
     return render(request, 'create_post.html', context)
 
 
-
+def delete_post(request, post_id):
+    """Delete Post"""
+    post = get_object_or_404(Post, post_id=post_id)
+    post.delete()
+    return redirect('home')
 
