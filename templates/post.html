@@ -38,10 +38,12 @@
         {% if comments %}
         {% for comment in comments %}
         <div class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
-            <span class="important-text">{{ comment.author }} - {{ comment.created_date }}</span>
+            <span class="important-text">
+                {% if comment.author == request.user %}YOU{% else %}{{ comment.author }}{% endif %} - {{ comment.created_date }}</span>         
             <p class="ps-2 mt-2">{{ comment.body|urlize }}</p>
-            <a href="/delete_comment/{{ comment.comment_id }}" class="btn-sm post-button">Delete</a>
-            <a href=""></a>
+            {% if comment.author == request.user %}
+            <a href="/delete_comment/{{ comment.comment_id }}" class="btn-sm post-button mb-1 d-inline-block float-end">Delete</a>
+            {% endif %}
         </div>
         {% endfor %}  
         {% else %}
