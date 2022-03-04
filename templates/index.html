@@ -21,9 +21,9 @@
                 <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                     {% csrf_token %}
                     
-                    <button class="btn-sm post-button" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i></button>
+                    <button class="btn-sm post-button" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button>
                    
-                    <i class="fa-solid fa-heart"></i>
+                   
                    
                 </form>
                 

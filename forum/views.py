@@ -101,6 +101,6 @@ def like_post(request, post_id):
     """Like Post View"""
     post = get_object_or_404(Post, post_id=post_id)
     post.likes.add(request.user)
-
-    return redirect('home')
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
