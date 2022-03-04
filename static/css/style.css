@@ -36,6 +36,10 @@ span, h6, p {
     color:#FFCF74;
 }
 
+.nav-link{
+    color:#FFCF74;
+}
+
 .nav-link:hover, .nav-link:focus, .nav-link:active {
     color: #fff;
 }
