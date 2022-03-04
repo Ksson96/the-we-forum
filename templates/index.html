@@ -15,13 +15,13 @@
                 <p class="py-2 px-1" id="post-content">{{ post.content }}</p>
                     {% else %}
                 <a class="post-link" href="post/{{ post.post_id }}">             
-                    <h4 class="fs-4 mb-3 pt-2">{{ post.title }}</h4></a>
+                    <h4 class="fs-4 mb-3 pt-2">{{ post.title|urlize }}</h4></a>
                     {% endif %}
             <div class="py-1 post-options">
                 <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                     {% csrf_token %}
                     
-                    <button class="btn-sm post-button" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button>
+                    <button class="btn-sm {% if post.liked %} post-button-liked {% else %} post-button {% endif %}" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button></form>
                    
                 </form>
                 
