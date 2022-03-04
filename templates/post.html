@@ -26,10 +26,10 @@
         <div class="col-md-10 offset-md-1 comment-container comment-like pb-1">
             <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                 {% csrf_token %}
-            <button class="btn-sm post-button" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button></form>
+            <button class="btn-sm {% if liked %} post-button-liked {% else %} post-button {% endif %}" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button></form>
             <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse"  aria-expanded="false" aria-controls="collapse"><i class="fa-regular fa-comment"></i> Comment</button>
             </div>
-        <div class="col-md-10 offset-md-1 collapse py-2 comment-container comment-form">
+        <div class="col-md-10 offset-md-1 {% if comment_button %} collapse.show {% else %} collapse {% endif %} py-2 comment-container comment-form">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ comment_form }}

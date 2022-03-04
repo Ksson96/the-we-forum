@@ -93,6 +93,23 @@ li {
     border: #FFCF74 solid 2px;
 }
 
+.post-button-liked {
+    color: #000;
+    background-color:#FFCF74;
+    border: #FFCF74 solid 2px;
+}
+
+.post-button:hover {
+    color: #000;
+    background-color:#FFCF74;
+}
+
+.post-button-liked:hover {
+    background-color:#363940;
+    color:#fff;
+    border: #FFCF74 solid 2px;
+}
+
 .comment-like-btn {
     background-color:#1d1e1f;
     color:#FFCF74;
@@ -103,10 +120,7 @@ li {
     background-color:#3e4041;
 }
 
-.post-button:hover {
-    color: #000;
-    background-color:#FFCF74;
-}
+
 
 .author-options {
     float:right;
