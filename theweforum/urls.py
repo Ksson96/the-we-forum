@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from forum import views
+from django.views.generic.edit import CreateView
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('delete_post/<int:post_id>', views.delete_post, name="delete_post"),
     path('delete_comment/<comment_id>', views.delete_comment, name="delete_comment"),
     path('like_post/<post_id>', views.like_post, name="like_post"),
+    path('accounts/signup', CreateView.as_view(success_url='home')),
 ]
