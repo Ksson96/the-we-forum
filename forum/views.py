@@ -5,12 +5,15 @@ from django.http import HttpResponseRedirect
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def home_screen(request):
     """Home Screen View"""
     posts = Post.objects.all()
-    context = {'posts':posts}
+    context = {
+        'posts':posts
+        }
     return render(request, 'index.html', context)
 
 
@@ -19,6 +22,10 @@ def post(request, post_id):
     post = get_object_or_404(Post, post_id=post_id)
     comments = Comment.objects.filter(post=post)
     comment_form = CommentForm(request.POST)
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        liked = True
+
     if request.method == 'POST':
         if comment_form.is_valid():
             obj = comment_form.save(commit=False)
@@ -26,13 +33,11 @@ def post(request, post_id):
             obj.post = post
             obj.save()
             return redirect(request.path_info)
-        else:
-            print("ERROR : Form is invalid")
-            print(comment_form.errors)
 
     context = {
         'post':post,
         'comments':comments,
+        'liked':liked,
         'comment_form':comment_form
     }
     return render(request, 'post.html', context)
@@ -60,6 +65,7 @@ def edit_post(request, post_id):
         return render(request, 'edit_post.html', context)
 
 
+@login_required()
 def create_post(request):
     """Create Post View"""
     form = PostForm(request.POST)
@@ -95,6 +101,7 @@ def delete_comment(request, comment_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required()
 def like_post(request, post_id):
     """Like Post View"""
     post = get_object_or_404(Post, post_id=post_id)
