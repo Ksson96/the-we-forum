@@ -9,9 +9,7 @@ from django.contrib.auth.models import User
 
 def home_screen(request):
     """Home Screen View"""
-    print(request.headers)
     posts = Post.objects.all()
-    print(User)
     context = {'posts':posts}
     return render(request, 'index.html', context)
 
@@ -100,7 +98,11 @@ def delete_comment(request, comment_id):
 def like_post(request, post_id):
     """Like Post View"""
     post = get_object_or_404(Post, post_id=post_id)
-    post.likes.add(request.user)
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)       
+    else:
+        post.likes.add(request.user)
+        
     
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
