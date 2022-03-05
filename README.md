@@ -6,7 +6,6 @@ The "We" Forum is a forum website aimed at building a community of people where 
 
 1. [UX](#ux)
     - [Goals](#goals)
-        - [Project Goals](#project-goals)
         - [Visitor Goals](#visitor-goals)
     - [User Stories](#user-stories)
     - [Design Choices](#design-choices)
@@ -14,7 +13,7 @@ The "We" Forum is a forum website aimed at building a community of people where 
 
 2. [Features](#features)
     - [Existing Features](#exisiting-features)
-
+    - 
     - [Future Goals](#future-goals)
 
 3. [Information Architecture](#information-architecture)
@@ -168,3 +167,9 @@ No automated testing has been used on this project.
 
 ### Unresolved Issues
 Login and Signup page not properly displaying messages in case of validation errors. 
+
+## Credits
+
+### Media
+Logo for the website was made by my dear friend Theodor Wells
+
