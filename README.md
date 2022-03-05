@@ -110,7 +110,6 @@ To create a better sense of community, future goals include creating topics that
 | content       	| TextField      	|              	|
 | created_date  	| DateTime       	|              	|
 | updated_date  	| DateTime       	|              	|
-| category_name 	| Category model 	| ForeignKey   	|
 | likes         	| User model     	| ManyToMany   	|
 
 ### Comments Table
