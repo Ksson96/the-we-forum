@@ -1,10 +1,8 @@
 """Imports"""
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
@@ -12,7 +10,7 @@ def home_screen(request):
     """Home Screen View"""
     posts = Post.objects.all()
     context = {
-        'posts':posts
+        'posts': posts
         }
     return render(request, 'index.html', context)
 
@@ -28,17 +26,17 @@ def post(request, post_id):
 
     if request.method == 'POST':
         if comment_form.is_valid():
-            obj = comment_form.save(commit=False)
-            obj.author = request.user
-            obj.post = post
-            obj.save()
+            forum_post = comment_form.save(commit=False)
+            forum_post.author = request.user
+            forum_post.post = post
+            forum_post.save()
             return redirect(request.path_info)
 
     context = {
-        'post':post,
-        'comments':comments,
-        'liked':liked,
-        'comment_form':comment_form
+        'post': post,
+        'comments': comments,
+        'liked': liked,
+        'comment_form': comment_form
     }
     return render(request, 'post.html', context)
 
@@ -50,17 +48,14 @@ def edit_post(request, post_id):
         if request.method == 'POST':
             form = PostForm(request.POST, instance=post)
             if form.is_valid():
-                obj = form.save(commit=False)
-                obj.author = request.user
-                obj.save()
+                updated_post = form.save(commit=False)
+                updated_post.author = request.user
+                updated_post.save()
                 return redirect('home')
-            else:
-                print("ERROR : Form is invalid")
-                print(form.errors)
 
         form = PostForm(instance=post)
         context = {
-            'form':form
+            'form': form
         }
         return render(request, 'edit_post.html', context)
 
@@ -71,15 +66,12 @@ def create_post(request):
     form = PostForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            obj = form.save(commit=False)
-            obj.author = request.user
-            obj.save()
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
             return redirect('home')
-        else:
-            print("ERROR : Form is invalid")
-            print(form.errors)
 
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'create_post.html', context)
 
 
@@ -106,10 +98,9 @@ def like_post(request, post_id):
     """Like Post View"""
     post = get_object_or_404(Post, post_id=post_id)
     if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)       
+        post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
         
-    
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

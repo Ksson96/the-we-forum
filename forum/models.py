@@ -3,11 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-#class Category(models.Model):
-#    """Category model."""
-#    category = models.CharField(max_length=30, unique=True, primary_key=True)
-
-
 class Post(models.Model):
     """Post model."""
     post_id = models.AutoField(primary_key=True)
@@ -16,7 +11,6 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
-#    category = models.ForeignKey(Category, default='No Category', on_delete=models.SET_DEFAULT, related_name='post_category')
     likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
 
     def __str__(self):
