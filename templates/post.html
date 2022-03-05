@@ -10,50 +10,49 @@
             {% else %}
             <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
             {% endif %}
-    {% if post.title %}
+            {% if post.title %}
             <h4 class="fs-4 fw-bold">{{ post.title|urlize }}</h4>
-    {% endif %}
-        <p>{{ post.content|urlize }}</p>
-    
-</div>
-</div>
+            {% endif %}
+            <p>{{ post.content|urlize }}</p>
+        </div>
+    </div>
 
-
-
-<!--Comment Section-->
-
+    <!--Comment Section-->
     <div class="row">
         <div class="col-md-10 offset-md-1 comment-container comment-like pb-1">
             <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                 {% csrf_token %}
-            <button class="btn-sm {% if liked %} post-button-liked {% else %} post-button {% endif %}" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button></form>
-            <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse"  aria-expanded="false" aria-controls="collapse"><i class="fa-regular fa-comment"></i> Comment</button>
-            </div>
-        <div class="col-md-10 offset-md-1 {% if comment_button %} collapse.show {% else %} collapse {% endif %} py-2 comment-container comment-form">
+                <button class="btn-sm {% if liked %} post-button-liked {% else %} post-button {% endif %}" type="submit"
+                    name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i>
+                    {{ post.likes_amount }}</button></form>
+            <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-expanded="false" aria-controls="collapse"><i class="fa-regular fa-comment"></i> Comment</button>
+        </div>
+        <div
+            class="col-md-10 offset-md-1 {% if comment_button %} collapse.show {% else %} collapse {% endif %} py-2 comment-container comment-form">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ comment_form }}
-            <input type="submit" name="Submit" value="Submit" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button mt-2">
+                <input type="submit" name="Submit" value="Submit" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="collapse" class="btn fs-6 post-button mt-2">
         </div>
         {% if comments %}
         {% for comment in comments %}
-        <div class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
+        <div
+            class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
             <span class="important-text">
-                {% if comment.author == request.user %}YOU{% else %}{{ comment.author }}{% endif %} - {{ comment.created_date }}</span>         
+                {% if comment.author == request.user %}YOU{% else %}{{ comment.author }}{% endif %} -
+                {{ comment.created_date }}</span>
             <p class="ps-2 mt-2">{{ comment.body|urlize }}</p>
             {% if comment.author == request.user %}
-            <a href="/delete_comment/{{ comment.comment_id }}" class="btn-sm post-button mb-1 d-inline-block float-end">Delete</a>
+            <a href="/delete_comment/{{ comment.comment_id }}"
+                class="btn-sm post-button mb-1 d-inline-block float-end">Delete</a>
             {% endif %}
         </div>
-        {% endfor %}  
+        {% endfor %}
         {% else %}
         <div class="col-md-10 offset-md-1 last-comment comment-container">
             <h6 class="pt-2">Be the first one to comment on this post!</h6>
         </div>
         {% endif %}
-        
     </div>
-    </div>
-
-
-    {% endblock %}
+</div>
+{% endblock %}

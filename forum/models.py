@@ -24,7 +24,7 @@ class Post(models.Model):
 
     def likes_amount(self):
         return self.likes.count()
-    
+
     class Meta:
         """Post Ordering"""
         ordering = ['-created_date', 'updated_date']

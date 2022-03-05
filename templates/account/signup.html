@@ -1,17 +1,13 @@
 {% extends "base.html" %}
-
 {% load i18n %}
-
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
 {% block content %}
 <div class="container mt-4 form-container">
   <div class="row">
-      <div class="col">
-        <h1>Sign Up</h1>
-
-<p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
-      </div>
+    <div class="col">
+      <h1>Sign Up</h1>
+      <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+    </div>
   </div>
   <div class="row mb-2">
     <div class="col">
@@ -25,8 +21,5 @@
     </div>
   </div>
 </div>
-
-  
 </form>
-
 {% endblock %}

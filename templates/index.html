@@ -9,38 +9,32 @@
             {% else %}
             <span id="post-info">Posted by {{ post.author }} on {{ post.created_date }}</span>
             {% endif %}
-                {% if post.content %}
-                <a class="post-link" href="post/{{ post.post_id }}">             
-                    <h4 class="fs-4">{{ post.title }}</h4></a>
-                <p class="py-2 px-1" id="post-content">{{ post.content }}</p>
-                    {% else %}
-                <a class="post-link" href="post/{{ post.post_id }}">             
-                    <h4 class="fs-4 mb-3 pt-2">{{ post.title|urlize }}</h4></a>
-                    {% endif %}
+            {% if post.content %}
+            <a class="post-link" href="post/{{ post.post_id }}">
+                <h4 class="fs-4">{{ post.title }}</h4>
+            </a>
+            <p class="py-2 px-1" id="post-content">{{ post.content }}</p>
+            {% else %}
+            <a class="post-link" href="post/{{ post.post_id }}">
+                <h4 class="fs-4 mb-3 pt-2">{{ post.title|urlize }}</h4>
+            </a>
+            {% endif %}
             <div class="py-1 post-options">
                 <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                     {% csrf_token %}
-                    
-                    <button class="btn-sm {% if post.liked %} post-button-liked {% else %} post-button {% endif %}" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i> {{ post.likes_amount }}</button></form>
-                   
+                    <button class="btn-sm {% if post.liked %} post-button-liked {% else %} post-button {% endif %}"
+                        type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i>
+                        {{ post.likes_amount }}</button></form>
                 </form>
-                
-                
-                <a href="post/{{ post.post_id }}" class="btn-sm fs-6 post-button d-inline-block"><i class="fa-regular fa-comment"></i> Comment</a>
+                <a href="post/{{ post.post_id }}" class="btn-sm fs-6 post-button d-inline-block"><i
+                        class="fa-regular fa-comment"></i> Comment</a>
                 {% if post.author == request.user %}
-               
                 <a href="/delete_post/{{ post.post_id }}" class="btn-sm post-button mx-1 author-options">Delete</a>
                 <a href="/edit_post/{{ post.post_id }}" class="btn-sm post-button author-options">Edit</a>
-            
-        
                 {% endif %}
             </div>
-        
-        
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}

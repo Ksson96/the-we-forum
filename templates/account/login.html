@@ -1,16 +1,14 @@
 {% extends "base.html" %}
-
 {% load i18n %}
 {% load account socialaccount %}
-
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-
 {% block content %}
 <div class="container mt-4 form-container">
   <div class="row">
     <div class="col p-2">
       <h3>Log In</h3>
-      <p>{% blocktrans %}You need an account to be able to create, like and comment posts. If you're not already signed up, please 
+      <p>{% blocktrans %}You need an account to be able to create, like and comment posts. If you're not already signed
+        up, please
         <a href="{{ signup_url }}">create an account</a> first.{% endblocktrans %}</p>
     </div>
   </div>
@@ -26,9 +24,5 @@
       </form>
     </div>
   </div>
-    
-  </div>
-  
-
-
+</div>
 {% endblock %}
