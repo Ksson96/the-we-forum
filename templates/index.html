@@ -22,9 +22,12 @@
             <div class="py-1 post-options">
                 <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                     {% csrf_token %}
-                    <button class="btn-sm {% if post.liked %} post-button-liked {% else %} post-button {% endif %}"
-                        type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i>
-                        {{ post.likes_amount }}</button></form>
+                    {% if not request.user.is_authenticated %}
+                    <a href="{{ 'accounts/login/' }}" class="btn-sm post-button py-2 me-2"><i class="fa-regular fa-heart"></i>{{ post.likes_amount }}</button>
+                    {% else %}
+                    <a href="post/{{ post.post_id }}" class="btn-sm post-button py-2 me-2"><i class="fa-regular fa-heart"></i>{{ post.likes_amount }}</button>
+                    {% endif %}    
+                    </form>
                 </form>
                 <a href="post/{{ post.post_id }}" class="btn-sm fs-6 post-button d-inline-block"><i
                         class="fa-regular fa-comment"></i> Comment</a>

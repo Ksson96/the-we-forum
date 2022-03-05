@@ -22,10 +22,15 @@
         <div class="col-md-10 offset-md-1 comment-container comment-like pb-1">
             <form action="{% url 'like_post' post.post_id %}" method="POST" class="d-inline">
                 {% csrf_token %}
-                <button class="btn-sm {% if liked %} post-button-liked {% else %} post-button {% endif %}" type="submit"
-                    name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i>
-                    {{ post.likes_amount }}</button></form>
-            <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-expanded="false" aria-controls="collapse"><i class="fa-regular fa-comment"></i> Comment</button>
+                {% if not request.user.is_authenticated %}
+                <span class="btn-sm post-button py-2 me-2 d-inline-block"><i class="fa-regular fa-heart"></i>{{ post.likes_amount }}</span></form>
+                <span class="btn-sm fs-6 post-button d-inline-block"><i class="fa-regular fa-comment"></i> Comment</span>
+                <hr>
+                <span>Log in order to like and comment!</span>
+                {% else %}
+                <button class="btn-sm {% if liked %} post-button-liked {% else %} post-button {% endif %}" type="submit" name="post.post_id" value="{{ post.post_id }}"><i class="fa-regular fa-heart"></i>{{ post.likes_amount }}</button></form>
+                <button type="button" class="btn-sm fs-6 post-button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-expanded="false" aria-controls="collapse"><i class="fa-regular fa-comment"></i> Comment</button>
+                {% endif %}
         </div>
         <div
             class="col-md-10 offset-md-1 {% if comment_button %} collapse.show {% else %} collapse {% endif %} py-2 comment-container comment-form">
@@ -36,8 +41,7 @@
         </div>
         {% if comments %}
         {% for comment in comments %}
-        <div
-            class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
+        <div class="col-md-10 offset-md-1 pt-2  comment-container {% if forloop.counter|divisibleby:2 %}{% else %}comment-color{% endif %} {% if forloop.last %}last-comment{% endif %}">
             <span class="important-text">
                 {% if comment.author == request.user %}YOU{% else %}{{ comment.author }}{% endif %} -
                 {{ comment.created_date }}</span>
