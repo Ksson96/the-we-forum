@@ -90,10 +90,6 @@ When a user clicks on a post this page will display the full post as well as the
 
 The commments are shown beneath the post detail view. Here users can have a discussion relating to the post in question. 
 
-#### Contact
-
-The contact page allows the user a variety of methods to contact the artist in relation to either new potential clients or with regards to queries related to existing orders, potential orders or stock queries.
-
 ### Future Goals
 
 To create a better sense of community, future goals include creating topics that posts can be categorized into to seperate interests and discussions to the users chosen subjects. And to keep the discussion going, a notification system would help to alert users when a user interracts with their posts. 
